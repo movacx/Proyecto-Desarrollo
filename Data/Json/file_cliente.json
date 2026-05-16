@@ -1,0 +1,18 @@
+[
+    {
+        "Cliente": "604800208",
+        "Nombre": "Herlin",
+        "Correo": "fabianbeita31@gmail.com",
+        "Contraseña": "pene",
+        "Rol": "Usuario",
+        "Ped": "perro"
+    },
+    {
+        "Cliente": "1",
+        "Nombre": "1",
+        "Correo": "11",
+        "Contraseña": "12314",
+        "Rol": "Usuario",
+        "Ped": "1"
+    }
+]
