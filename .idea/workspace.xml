@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ed9a24c2-b4a3-4288-852f-5382d6b43920" name="Changes" comment="" />
+    <list default="true" id="ed9a24c2-b4a3-4288-852f-5382d6b43920" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Data/Json/file_cliente.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Json/file_cliente.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/Controller/login_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Controller/login_controller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/Model/usuario_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Model/usuario_model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/Service/cliente_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Service/cliente_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/login_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/View/login_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/register_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/View/register_view.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,24 +17,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3DozZniTTGG8ZHnrrgdI1u7pgW1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/movacx/Documentos/GitHub/Proyecto-Desarrollo"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/movacx/Documentos/GitHub/Proyecto-Desarrollo&quot;
   }
-}]]></component>
+}</component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="ed9a24c2-b4a3-4288-852f-5382d6b43920" name="Changes" comment="" />

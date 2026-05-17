@@ -86,6 +86,9 @@ class Registro:
         self.entry_password.delete(0,tk.END)
         self.entry_ped.delete(0,tk.END)
 
+
+
+    
 #Testeo de Interfaz
 if __name__ == '__main__':
 

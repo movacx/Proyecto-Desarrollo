@@ -16,6 +16,9 @@ class Usuario:
     def get_correo(self):
         return self.correo
     
+    def get_passw(self):
+        return self.passw
+
     def setPassword(self, nueva_contraseña)->None:
         self.passw = nueva_contraseña
 

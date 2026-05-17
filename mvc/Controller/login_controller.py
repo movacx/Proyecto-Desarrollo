@@ -9,7 +9,6 @@ class LoginController:
         self.service = service
         self.ventana = root
         self.GUI_Login = Login(self, self.ventana)
-
         #Fin constructor
 
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
@@ -21,6 +20,9 @@ class LoginController:
         self.GUI_Login.contenedor.destroy()
         self.GUI_ventana_principal = VentanaPrincipal(self, self.ventana)
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
+
+
+    
 
     #Forms
     def registrar_usuario(self):
@@ -38,18 +40,31 @@ class LoginController:
 
         except Exception as error:
             self.GUI_Register.mostrar_adv(f'{error}')
-
+#=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def recuperar_usuario(self):
-        # try:
-        correo = self.GUI_recuperar.entry_correo.get()
-        contra = self.GUI_recuperar.entry_password.get()
-        ped_security = self.GUI_recuperar.entry_security_guard.get()
+        try:
+            correo = self.GUI_recuperar.entry_correo.get()
+            contra = self.GUI_recuperar.entry_password.get()
+            ped_security = self.GUI_recuperar.entry_security_guard.get()
 
-        mensaje = self.service.recuperar_cliente(correo, contra, ped_security)
-        self.GUI_recuperar.mostrar_mensaje(mensaje)
+            mensaje = self.service.recuperar_cliente(correo, contra, ped_security)
+            self.GUI_recuperar.mostrar_mensaje(mensaje)
 
-        # except Exception as error:
-        #     self.GUI_recuperar.mostrar_adv(f'{error}')
+        except Exception as error:
+            self.GUI_recuperar.mostrar_adv(f'{error}')
+#=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
+    def acceder(self):
+        try:
+            correo = self.GUI_Login.entry_correo.get()
+            contrasenna = self.GUI_Login.entry_password.get()
+            self.cliente_recibido = None
+            acceso_valido, self.cliente_recibido = self.service.loguearse(correo, contrasenna)
+            if acceso_valido:
+                self.btn_cargar_pantalla_principal()
+
+        except Exception as error:
+            self.GUI_Login.mostrar_adv(error)
+#=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 
 

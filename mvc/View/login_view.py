@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox, ttk
 
 class Login:
     def __init__(self, controller, root):
@@ -43,7 +44,7 @@ class Login:
 
     #-==--=-=-==--=-=-=-=-=-=-=-=-==--=-=-=-=-==--=-==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=-=-==--==--=-=-=-==--=-=-=-=-=-=-=-=-=-==--=-=-=-=-=-=-=-=-=-=-=-=-==--=-==-
     def _buttons(self):
-        self.btn_acceder = tk.Button(self.contenedor, text = 'Ingresar', command = lambda: self.manejo_controller.btn_cargar_pantalla_principal())
+        self.btn_acceder = tk.Button(self.contenedor, text = 'Ingresar', command = lambda: self.manejo_controller.acceder())
         self.btn_acceder.grid(row = 3, column = 1, sticky = 'we', pady = 10)
 
         self.btn_registrarse = tk.Button(self.contenedor, text = 'Registro', command = lambda: self.manejo_controller.btn_registrarse())
@@ -54,9 +55,13 @@ class Login:
 
     #-==--=-=-==--=-=-=-=-=-=-=-=-==--=-=-=-=-==--=-==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=-=-==--==--=-=-=-==--=-=-=-=-=-=-=-=-=-==--=-=-=-=-=-=-=-=-=-=-=-=-==--=-==-
     
+    def mostrar_adv(self, error):
+        messagebox.showwarning('Advertencia',error, parent = self.ventana)
+
+    def mostrar_mensaje(self, mensaje):
+        messagebox.showinfo('Informacion', mensaje, parent=self.ventana)
 
 
-    
     def _row_columns_configure(self):
         #raiz
         self.ventana.rowconfigure(0, weight = 1)

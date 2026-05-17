@@ -3,16 +3,16 @@
         "Cliente": "604800208",
         "Nombre": "Herlin",
         "Correo": "fabianbeita31@gmail.com",
-        "Contraseña": "pene",
+        "Contraseña": "skullfab23",
         "Rol": "Usuario",
         "Ped": "perro"
     },
     {
-        "Cliente": "1",
-        "Nombre": "1",
-        "Correo": "11",
-        "Contraseña": "12314",
-        "Rol": "Usuario",
-        "Ped": "1"
+        "Cliente": "ARM650",
+        "Nombre": "system_administrator",
+        "Correo": "admin@biblioteca.ac.cr",
+        "Contraseña": "desarrollocultural2026",
+        "Rol": "Admin",
+        "Ped": "ucr_tested"
     }
 ]

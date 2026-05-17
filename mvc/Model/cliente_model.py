@@ -7,8 +7,7 @@ class Cliente(Usuario):
         return f'{self.identificador} | {self.nombre} | {self.correo} | {self.rol}'
     
 
-    def get_id(self):
-        return self.identificador
+    
 
     def to_dict(self)->dict:
         return {
