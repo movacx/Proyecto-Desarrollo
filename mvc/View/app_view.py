@@ -3,31 +3,37 @@ from tkinter import ttk, messagebox
 
 
 class VentanaPrincipal:
-    def __init__(self, controller, root, panel_libro):
+    def __init__(self, controller, root, panel_libro, panel_donacion):
         self.manejo_controller = controller
         self.ventana = root
         self.ventana.geometry('1024x600')
         self.ventana.title('Principal - Biblioteca CoopePuntarenas')
         self.ventana.configure(bg='white')
 
+
+        self.clase_libro = panel_libro
+        self.clase_donativo = panel_donacion
+        self.panel_activo = None
+
+
         self._bar_menu()
         self._barra_laterial()
         self._parte_derecha()
         self._buttons()
 
-        self.clase_libro = panel_libro
-        self.panel_activo = None
 
 
 
 
     #work
 
-    def _cambiar_panel(self):
+    def _cambiar_panel(self, tipo_panel):
         if self.panel_activo is not None:
             self.panel_activo.contenedor.destroy()
+        
+        if tipo_panel is not None:
+            self.panel_activo = tipo_panel(self.campo_derecho) #Se inyecta el frame mediante la clase.
 
-        self.panel_activo = self.clase_libro(self.campo_derecho)
 
 #-=======================================================[PANEL DERECHO]============================================================================
     def _parte_derecha(self):
@@ -53,7 +59,7 @@ class VentanaPrincipal:
                                          bd=0,
                                          padx = 15,
                                          pady = 8,
-                                         anchor = 'w',command = self._cambiar_panel)
+                                         anchor = 'w',command=lambda :  self._cambiar_panel(self.clase_libro))
         
         self.btn_ver_libros.grid(row = 1, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
@@ -64,7 +70,7 @@ class VentanaPrincipal:
                                          bd=0,
                                          padx = 15,
                                          pady = 8,
-                                         anchor = 'w')
+                                         anchor = 'w', command = lambda:self._cambiar_panel(self.clase_donativo))
         self.btn_donar_libros.grid(row = 2, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
         self.btn_pedir_prestamo = tk.Button(self.barra_lateral, text = '🧾Solicitar Prestamo',
@@ -102,5 +108,6 @@ class VentanaPrincipal:
 
 if __name__ == '__main__':
     root = tk.Tk()
-    app = VentanaPrincipal(None, root, None)
+    ventana = tk.Frame(root).pack()
+    app = VentanaPrincipal(None, root,ventana )
     root.mainloop()

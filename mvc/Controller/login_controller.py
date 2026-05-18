@@ -3,7 +3,10 @@ from View.register_view import Registro
 from View.recover_view import RecuperarPass
 
 from View.app_view import VentanaPrincipal
+
+#=-=-=-=-Paneles-==-=-=--=
 from View.book_view import PanelLibros
+from View.panel_donacion_view import DonativoView
 
 class LoginController:
     def __init__(self, root, service):
@@ -19,7 +22,8 @@ class LoginController:
         self.GUI_recuperar = RecuperarPass(self, self.ventana)
     def btn_cargar_pantalla_principal(self):
         self.GUI_Login.contenedor.destroy()
-        self.GUI_ventana_principal = VentanaPrincipal(self, self.ventana, PanelLibros)
+        self.GUI_ventana_principal = VentanaPrincipal(self, self.ventana, PanelLibros, DonativoView)
+        
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
     #-===============- [Interaccion del panel izquierdo] ====================-
@@ -55,16 +59,16 @@ class LoginController:
             self.GUI_recuperar.mostrar_adv(f'{error}')
 #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def acceder(self):
-        try:
-            correo = self.GUI_Login.entry_correo.get()
-            contrasenna = self.GUI_Login.entry_password.get()
-            self.cliente_recibido = None
-            acceso_valido, self.cliente_recibido = self.service.loguearse(correo, contrasenna)
-            if acceso_valido:
-                self.btn_cargar_pantalla_principal()
+        # try:
+        correo = self.GUI_Login.entry_correo.get()
+        contrasenna = self.GUI_Login.entry_password.get()
+        self.cliente_recibido = None
+        acceso_valido, self.cliente_recibido = self.service.loguearse(correo, contrasenna)
+        if acceso_valido:
+            self.btn_cargar_pantalla_principal()
 
-        except Exception as error:
-            self.GUI_Login.mostrar_adv(error)
+        # except Exception as error:
+        #     self.GUI_Login.mostrar_adv(error)
 #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 
