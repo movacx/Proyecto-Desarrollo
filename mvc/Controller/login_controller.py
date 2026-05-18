@@ -3,6 +3,7 @@ from View.register_view import Registro
 from View.recover_view import RecuperarPass
 
 from View.app_view import VentanaPrincipal
+from View.book_view import PanelLibros
 
 class LoginController:
     def __init__(self, root, service):
@@ -18,11 +19,11 @@ class LoginController:
         self.GUI_recuperar = RecuperarPass(self, self.ventana)
     def btn_cargar_pantalla_principal(self):
         self.GUI_Login.contenedor.destroy()
-        self.GUI_ventana_principal = VentanaPrincipal(self, self.ventana)
+        self.GUI_ventana_principal = VentanaPrincipal(self, self.ventana, PanelLibros)
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
+    #-===============- [Interaccion del panel izquierdo] ====================-
 
-    
 
     #Forms
     def registrar_usuario(self):

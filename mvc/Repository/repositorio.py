@@ -15,7 +15,7 @@ class Repository(Generic[T]):
         #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
         definir_ruta = ruta
         dir_data = os.path.dirname(os.path.abspath(__file__))
-        self.file = os.path.abspath(os.path.join(dir_data,'..','..',definir_ruta))
+        self.file = os.path.abspath(os.path.join(dir_data,'..','..',definir_ruta))# '/Data/Json/file_libro.json'
         #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
         self._load() 
         

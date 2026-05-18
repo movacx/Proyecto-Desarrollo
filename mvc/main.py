@@ -8,7 +8,6 @@ def main():
     root = tk.Tk()
     service = ClienteService(Repository)
     controller = LoginController(root, service)
-
     root.mainloop()
 
 if __name__ == '__main__':

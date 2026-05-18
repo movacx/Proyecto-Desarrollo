@@ -14,5 +14,21 @@
         "Contraseña": "desarrollocultural2026",
         "Rol": "Admin",
         "Ped": "ucr_tested"
+    },
+    {
+        "Cliente": "604860994",
+        "Nombre": "Vladimir Sancho Venegas",
+        "Correo": "vladimirsancho55@gmail.com",
+        "Contraseña": "Vlad7m7rSv#@",
+        "Rol": "Usuario",
+        "Ped": "Tiburon Blanco"
+    },
+    {
+        "Cliente": "1",
+        "Nombre": "1",
+        "Correo": "1",
+        "Contraseña": "1",
+        "Rol": "Usuario",
+        "Ped": "1"
     }
 ]
