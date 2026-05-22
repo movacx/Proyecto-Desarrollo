@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed9a24c2-b4a3-4288-852f-5382d6b43920" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Data/Json/file_cliente.json" beforeDir="false" afterPath="$PROJECT_DIR$/Data/Json/file_cliente.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mvc/Controller/login_controller.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Controller/login_controller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/Model/usuario_model.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Model/usuario_model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/Service/cliente_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Service/cliente_service.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/View/login_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/View/login_view.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvc/View/register_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/View/register_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/Service/libro_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/Service/libro_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/app_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvc/View/app_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/book_view.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/login_view.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/panel_admin_view.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/panel_donacion_view.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/recover_view.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvc/View/register_view.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

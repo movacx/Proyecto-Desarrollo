@@ -28,7 +28,15 @@
         "Nombre": "1",
         "Correo": "1",
         "Contraseña": "1",
-        "Rol": "Usuario",
+        "Rol": "Admin",
         "Ped": "1"
+    },
+    {
+        "Cliente": "2",
+        "Nombre": "2",
+        "Correo": "2",
+        "Contraseña": "2",
+        "Rol": "Usuario",
+        "Ped": "2"
     }
 ]

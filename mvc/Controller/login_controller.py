@@ -1,35 +1,28 @@
-from View.login_view import Login
-from View.register_view import Registro
-from View.recover_view import RecuperarPass
+from View.Login.login_view import Login
+from View.Login.register_view import Registro
+from View.Login.recover_view import RecuperarPass
 
-from View.app_view import VentanaPrincipal
-
-#=-=-=-=-Paneles-==-=-=--=
-from View.book_view import PanelLibros
-from View.panel_donacion_view import DonativoView
+from Controller.controller_ventana_principal import Ventana
 
 class LoginController:
     def __init__(self, root, service):
         self.service = service
         self.ventana = root
         self.GUI_Login = Login(self, self.ventana)
-        #Fin constructor
 
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def btn_registrarse(self):
         self.GUI_Register = Registro(self, self.ventana)
+    #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def btn_recuperar_contrasenna(self):
         self.GUI_recuperar = RecuperarPass(self, self.ventana)
+    #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def btn_cargar_pantalla_principal(self):
         self.GUI_Login.contenedor.destroy()
-        self.GUI_ventana_principal = VentanaPrincipal(self, self.ventana, PanelLibros, DonativoView)
-        
+        self.contenedor_principal = Ventana(self,self.ventana)
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
-    #-===============- [Interaccion del panel izquierdo] ====================-
 
-
-    #Forms
     def registrar_usuario(self):
         try:
             dni = self.GUI_Register.entry_dni.get()
@@ -45,9 +38,10 @@ class LoginController:
 
         except Exception as error:
             self.GUI_Register.mostrar_adv(f'{error}')
-#=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
+
     def recuperar_usuario(self):
         try:
+
             correo = self.GUI_recuperar.entry_correo.get()
             contra = self.GUI_recuperar.entry_password.get()
             ped_security = self.GUI_recuperar.entry_security_guard.get()
@@ -57,18 +51,32 @@ class LoginController:
 
         except Exception as error:
             self.GUI_recuperar.mostrar_adv(f'{error}')
-#=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
-    def acceder(self):
-        # try:
-        correo = self.GUI_Login.entry_correo.get()
-        contrasenna = self.GUI_Login.entry_password.get()
-        self.cliente_recibido = None
-        acceso_valido, self.cliente_recibido = self.service.loguearse(correo, contrasenna)
-        if acceso_valido:
-            self.btn_cargar_pantalla_principal()
 
-        # except Exception as error:
-        #     self.GUI_Login.mostrar_adv(error)
+
+    def acceder(self):
+        try:
+
+            correo = self.GUI_Login.entry_correo.get()
+            contrasenna = self.GUI_Login.entry_password.get()
+            self.cliente_recibido = None
+            self.cliente_recibido = self.service.loguearse(correo, contrasenna)
+
+            if self.cliente_recibido.rol == 'Usuario':
+                self.btn_cargar_pantalla_principal()
+                print('entrando como usuario', self.cliente_recibido)
+                return self.cliente_recibido
+            
+            elif self.cliente_recibido.rol == 'Admin':
+                print('Accediendo con el usuario administrativo:', self.cliente_recibido)
+                self.GUI_Login.contenedor.destroy()
+                self.ventana = Ventana(self,self.ventana)
+                self.ventana.cargar()
+
+
+        except Exception as error:
+            self.GUI_recuperar.mostrar_adv(f'{error}')
+
+
 #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
 

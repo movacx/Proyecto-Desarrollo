@@ -77,7 +77,7 @@ class ClienteService:
         if str(cliente_encontrado.passw) != str(contra):
             raise ValueError('Contraseña incorrecta!')
 
-        return True, cliente_encontrado
+        return cliente_encontrado
 
 
 
