@@ -1,3 +1,6 @@
+#archivo usuario_model
+
+
 class Usuario:
     def __init__(self, identificador:str, nombre:str, correo:str, passw:str, rol:str, ped:str)->None:
         self.identificador = identificador

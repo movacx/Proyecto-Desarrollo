@@ -1,3 +1,7 @@
+
+#archivo donacion_model.py
+
+
 class Donativo:
     def __init__(self, id_donacion:str, id_cliente:str, fecha_donacion:str, nombre_autor:str, titulo_libro:str, cant_libros_donados:int, recibido:bool)->None:
         self.id_donacion = id_donacion

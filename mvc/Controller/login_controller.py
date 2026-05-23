@@ -2,6 +2,9 @@ from View.Login.login_view import Login
 from View.Login.register_view import Registro
 from View.Login.recover_view import RecuperarPass
 
+
+#archivo login_controller
+
 from Controller.controller_ventana_principal import Ventana
 
 class LoginController:
@@ -71,6 +74,7 @@ class LoginController:
                 self.GUI_Login.contenedor.destroy()
                 self.ventana = Ventana(self,self.ventana)
                 self.ventana.cargar()
+                return self.cliente_recibido
 
 
         except Exception as error:

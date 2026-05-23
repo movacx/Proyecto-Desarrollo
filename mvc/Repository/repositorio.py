@@ -3,7 +3,7 @@ import os
 
 from typing import TypeVar, Generic, Callable
 
-
+#archivo repositorio.py
 T = TypeVar('T')
 
 class Repository(Generic[T]):
@@ -53,6 +53,11 @@ class Repository(Generic[T]):
     def listar(self)->list:
         return self.datos
     #----------------------------------------
+    def existe_id(self, id: str):
+        for item in self.datos:
+            if str(item.get_id()) == str(id):
+                return True
+        return False
     def buscar_id(self, id: str):
         for item in self.datos:
             if str(item.get_id()) == str(id):

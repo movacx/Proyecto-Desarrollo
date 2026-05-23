@@ -1,3 +1,5 @@
+#archivo: prestamo_model.py
+
 class Prestamo:
     def __init__(self, id_prestamo:str, id_libro:str, id_cliente:str, fecha_prestamo:str, fecha_devolucion:str)->None:
         self.id_prestamo = id_prestamo

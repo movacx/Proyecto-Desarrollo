@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox, ttk
 
+#archivo login_view.py
+
 class Login:
     def __init__(self, controller, root):
         #Params

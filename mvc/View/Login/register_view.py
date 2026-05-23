@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
+#archivo register_view.py
+
 class Registro:
     def __init__(self, controller, root):
         #Params

@@ -1,5 +1,8 @@
 from Model.cliente_model import Cliente
 
+#archivo cliente_service
+
+
 class ClienteService:
     def __init__(self, repository):
         self.repo = repository('Data/Json/file_cliente.json', Cliente.from_dict)

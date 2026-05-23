@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-
+#archivo: panel_book_view.py
 class PanelLibros:
     def __init__(self, enlace_ventana):
         self.contenedor = tk.Frame(enlace_ventana)
-        self.contenedor.pack(side='right', fill = 'both', expand=True)
+        self.contenedor.pack(side='right',fill='both',expand=True)
         self._table()
 
     def _table(self):#id_libro:str, titulo:str, autor:str, inventario:int, estado_prestamo:bool,id_estante

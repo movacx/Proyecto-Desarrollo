@@ -1,3 +1,5 @@
+#archivo cliente_model
+
 from Model.usuario_model import Usuario
 class Cliente(Usuario):
     def __init__(self, identificador:str, nombre:str, correo:str, passw:str, rol:str, ped:str)->None:

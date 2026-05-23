@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-
+#archivo panel_donacion_view,py
 class DonativoView:
     def __init__(self, enlace):
         self.contenedor = tk.Frame(enlace)

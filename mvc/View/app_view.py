@@ -1,12 +1,12 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
-
+#archivo app_view.py
 class VentanaPrincipal:
-    def __init__(self, controller, root, panel_libro, panel_donacion, panel_administrativo):
+    def __init__(self, controller, root, panel_libro, panel_donacion, panel_administrativo, ):
         self.manejo_controller = controller
         self.ventana = root
-        self.ventana.geometry('1024x600')
+        self.ventana.geometry('1366x768')
         self.ventana.title('Principal - Biblioteca CoopePuntarenas')
         self.ventana.configure(bg='white')
 
@@ -18,16 +18,10 @@ class VentanaPrincipal:
 
 
         self._bar_menu()
+        self._parte_derecha()  
         self._barra_laterial()
-        self._parte_derecha()
-        self._buttons()
-        #self._cargar_boton_administrativo()
+        self._buttons()       
 
-
-
-
-
-    #work
 
     def _cambiar_panel(self, tipo_panel):
         if self.panel_activo is not None:
@@ -92,9 +86,9 @@ class VentanaPrincipal:
                                             font = ('Arial', 11, 'bold'),
                                             padx = 5,
                                             pady = 5,
-                                            anchor = 'w',)
-        self.btn_administrativo.grid(row=4,column = 0, pady = 370, sticky = 'we')
-        
+                                            anchor = 'w',
+                                            command = lambda: self.clase_administrativa(self.ventana))
+        self.btn_administrativo.grid(row=4, column=0, pady=370, sticky='we')
 
     #-=======================================================[FIN IZQUIERDO]============================================================================
 

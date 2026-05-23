@@ -1,25 +1,33 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 
+#archivo windows_Admin.py
 
 class InterfazAdmin:
-    def __init__(self, controller, root):
-        self.manejo_controller = controller
-        self.ventana = root
-        self.ventana.geometry('1024x600')
-        self.ventana.title('Principal - Biblioteca CoopePuntarenas')
+    def __init__(self, controller,root, panel_libro):
+        self.ventana = tk.Toplevel(root)
         self.ventana.configure(bg='white')
+        self.ventana.geometry('1024x600')
+        self.controller = controller
+        self.clase_registro_libro = panel_libro
+        
+        
+        self.panel_activo = None
 
-        self._barra_laterial()
-        self._parte_derecha()
-        self._buttons()
+        self._parte_derecha()  
+        self._barra_laterial() 
+        self._buttons()      
 
+
+# window_admin.py
 
     def _cambiar_panel(self, tipo_panel):
         if self.panel_activo is not None:
-            self.panel_activo.contenedor.destroy()        
+            self.panel_activo.contenedor.destroy()
+
         if tipo_panel is not None:
-            self.panel_activo = tipo_panel(self.campo_derecho)
+            self.panel_activo = tipo_panel(self.campo_derecho,self.controller
+            )
             
 #-=======================================================[PANEL DERECHO]============================================================================
     def _parte_derecha(self):
@@ -43,7 +51,8 @@ class InterfazAdmin:
                                          bd=0,
                                          padx = 15,
                                          pady = 8,
-                                         anchor = 'w')
+                                         anchor = 'w',
+                                         command = lambda: self._cambiar_panel(self.clase_registro_libro))
         
         self.btn_ver_libros.grid(row = 1, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
@@ -67,8 +76,8 @@ class InterfazAdmin:
         self.btn_pedir_prestamo.grid(row=3, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
 
-if __name__ == '__main__':
-    root = tk.Tk()
-    app = InterfazAdmin(None, root)
-    root.mainloop()
-    
+    def mostrar_adv(self, error):
+        messagebox.showwarning('Advertencia',error, parent = self.ventana)
+
+    def mostrar_mensaje(self, mensaje):
+        messagebox.showinfo('Informacion', mensaje, parent=self.ventana)

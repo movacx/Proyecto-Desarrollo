@@ -1,5 +1,5 @@
 import tkinter as tk
-
+#archivo main.py
 from Controller.login_controller import LoginController
 from Repository.repositorio import Repository
 from Service.cliente_service import ClienteService
