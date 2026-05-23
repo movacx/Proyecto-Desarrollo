@@ -74,7 +74,11 @@ class Login:
         self.ventana.columnconfigure(1, weight = 1)
         self.ventana.columnconfigure(2, weight = 1)
         
+    def mostrar_adv(self, error):
+        messagebox.showwarning('Advertencia',error, parent = self.ventana)
 
+    def mostrar_mensaje(self, mensaje):
+        messagebox.showinfo('Informacion', mensaje, parent=self.ventana)
 #Testeo de Interfaz
 if __name__ == '__main__':
 

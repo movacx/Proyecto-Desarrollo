@@ -2,15 +2,14 @@ from View.Login.login_view import Login
 from View.Login.register_view import Registro
 from View.Login.recover_view import RecuperarPass
 
-
-#archivo login_controller
-
-from Controller.controller_ventana_principal import Ventana
-
 class LoginController:
-    def __init__(self, root, service):
+    def __init__(self,root,service,ventanaPrincipal,service_donativo,controller_admin):
+        self.cliente_recibido = None
         self.service = service
         self.ventana = root
+        self.ventana_principal = ventanaPrincipal
+        self.service_donativo = service_donativo
+        self.controller_admin = controller_admin
         self.GUI_Login = Login(self, self.ventana)
 
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
@@ -22,9 +21,8 @@ class LoginController:
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def btn_cargar_pantalla_principal(self):
         self.GUI_Login.contenedor.destroy()
-        self.contenedor_principal = Ventana(self,self.ventana)
+        self.contenedor_principal = self.ventana_principal(self,self.ventana,self.service_donativo,self.controller_admin)
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
-
 
     def registrar_usuario(self):
         try:
@@ -42,6 +40,7 @@ class LoginController:
         except Exception as error:
             self.GUI_Register.mostrar_adv(f'{error}')
 
+
     def recuperar_usuario(self):
         try:
 
@@ -57,28 +56,29 @@ class LoginController:
 
 
     def acceder(self):
-        try:
+        correo = self.GUI_Login.entry_correo.get()
+        contrasenna = self.GUI_Login.entry_password.get()
+        
 
-            correo = self.GUI_Login.entry_correo.get()
-            contrasenna = self.GUI_Login.entry_password.get()
-            self.cliente_recibido = None
-            self.cliente_recibido = self.service.loguearse(correo, contrasenna)
+        self.cliente_recibido = self.service.loguearse(correo, contrasenna)
 
-            if self.cliente_recibido.rol == 'Usuario':
-                self.btn_cargar_pantalla_principal()
-                print('entrando como usuario', self.cliente_recibido)
-                return self.cliente_recibido
-            
-            elif self.cliente_recibido.rol == 'Admin':
-                print('Accediendo con el usuario administrativo:', self.cliente_recibido)
-                self.GUI_Login.contenedor.destroy()
-                self.ventana = Ventana(self,self.ventana)
-                self.ventana.cargar()
-                return self.cliente_recibido
+        if self.cliente_recibido.rol == 'Usuario':
+            self.btn_cargar_pantalla_principal()
+            self.contenedor_principal.mostrar_ventana()
+            print('entrando como usuario', self.cliente_recibido)
+            return self.cliente_recibido
+        
+        elif self.cliente_recibido.rol == 'Admin':
+            print('Accediendo con el usuario administrativo:', self.cliente_recibido)
+            self.GUI_Login.contenedor.destroy()
+            self.contenedor_principal = self.ventana_principal(self,self.ventana,self.service_donativo,self.controller_admin)
+
+            self.contenedor_principal.mostrar_ventana()
+            self.contenedor_principal.cargar()
+
+            return self.cliente_recibido
 
 
-        except Exception as error:
-            self.GUI_recuperar.mostrar_adv(f'{error}')
 
 
 #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#

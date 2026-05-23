@@ -1,20 +1,35 @@
-
 from View.app_view import VentanaPrincipal
 from View.Panels.panel_book_view import PanelLibros
 from View.Panels.panel_donacion_view import DonativoView
-#archivo controller_ventana_principal.py
-from Controller.controller_ventana_adm import VentanaAdministrativa
 
 class Ventana:
-    def __init__(self, controller, root):
+    def __init__(self, controller_login, root, service_donativo, controller_admin):
+        self.controller_admin = controller_admin
         self.ventana = root
-        self.controller_login = controller
-        self.GUI_ventana_principal = VentanaPrincipal(controller, self.ventana, PanelLibros, DonativoView, VentanaAdministrativa)
+        self.controller_login = controller_login
+        self.service = service_donativo
+        
+
+        
 
     def cargar(self):
         self.GUI_ventana_principal._cargar_boton_administrativo()
 
-        
+    def mostrar_ventana(self):
+        self.GUI_ventana_principal = VentanaPrincipal(self,self.ventana,PanelLibros,DonativoView,self.controller_admin)
 
+    def donar_libro(self):
 
-    
+        panel = self.GUI_ventana_principal.panel_activo
+        autor = panel.entry_nombre_autor.get()
+        titulo = panel.entry_titulo.get()
+        cantidad = panel.entry_cantidad.get()
+        cedula_usuario = self.controller_login.cliente_recibido.identificador
+
+        self.service.registrar_libro(autor,titulo,int(cantidad),cedula_usuario)
+
+    def recibir_registros(self, panel):
+
+        arreglo = self.service.listar_registros()
+
+        panel.insertar_tabla(arreglo)

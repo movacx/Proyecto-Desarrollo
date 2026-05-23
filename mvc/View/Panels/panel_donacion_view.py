@@ -2,7 +2,8 @@ import tkinter as tk
 from tkinter import ttk
 #archivo panel_donacion_view,py
 class DonativoView:
-    def __init__(self, enlace):
+    def __init__(self, enlace,controller):
+        self.manejo_controller = controller
         self.contenedor = tk.Frame(enlace)
         self.contenedor.pack(side='right', fill = 'both', expand=True)
 
@@ -13,11 +14,15 @@ class DonativoView:
 
         self.contenedor.configure(bg='white')
 
-
         self._labels()
         self._entry()
         self._buttons()
         self._table()
+
+        self.manejo_controller.recibir_registros(self)
+
+        self._insertar_dni(self.manejo_controller.controller_login.cliente_recibido.identificador)
+        self.entry_dni_cliente.config(state='disabled')
 
     def _labels(self):
         tk.Label(self.contenedor, text = '|Biblioteca Comunitaria CoopePuntarenas - Donar Libros|', font = ('Arial',11,'bold'),bg='white').grid(row=0,
@@ -56,7 +61,8 @@ class DonativoView:
         self.enviar = tk.Button(self.contenedor, text = 'Entregar Libro',
                                 bg = "#0E0909",
                                 fg = "#FFFFFF",
-                                bd=0)
+                                bd=0,
+                                command = lambda: self.manejo_controller.donar_libro()  )
         
         self.enviar.grid(row = 5, column =0, columnspan = 2,pady = 20)
 
@@ -67,3 +73,25 @@ class DonativoView:
 
         for items in columnas:
             self.tabla.heading(items, text = items)
+
+    def insertar_tabla(self, arreglo):
+        _estado = 'Pendiente' #id_donacion:str, id_cliente:str, fecha_donacion:str, nombre_autor:str, titulo_libro:str, cant_libros_donados:int, recibido:bool
+        for items in arreglo:
+            id = items.id_donacion
+            autor = items.nombre_autor
+            titulo = items.titulo_libro
+            cant = items.cant_libros_donados
+            estado = items.recibido
+
+            if estado == False:
+                pass
+            else:
+                _estado = 'Recibido y procesado'
+
+
+            self.tabla.insert('',tk.END, values = (id,autor,titulo,cant,_estado))
+
+    def _insertar_dni(self, dni):
+        self.entry_dni_cliente.delete(0, tk.END)
+        self.entry_dni_cliente.insert(0, dni)
+

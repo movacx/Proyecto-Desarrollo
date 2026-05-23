@@ -4,7 +4,7 @@
         "Nombre": "Herlin",
         "Correo": "fabianbeita31@gmail.com",
         "Contraseña": "skullfab23",
-        "Rol": "Usuario",
+        "Rol": "Admin",
         "Ped": "perro"
     },
     {
@@ -38,5 +38,13 @@
         "Contraseña": "2",
         "Rol": "Usuario",
         "Ped": "2"
+    },
+    {
+        "Cliente": "6784093323",
+        "Nombre": "Gustavo",
+        "Correo": "gustavo@gmail.com",
+        "Contraseña": "12345",
+        "Rol": "Usuario",
+        "Ped": "perro"
     }
 ]

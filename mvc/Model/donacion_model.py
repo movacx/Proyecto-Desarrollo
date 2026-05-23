@@ -28,11 +28,11 @@ class Donativo:
     
     def from_dict(data:dict)->Donativo:
         return Donativo(
-            id_donacion=data['Donación N'],
+            id_donacion=data['Donación N°'],
             id_cliente=data['Cliente'],
             fecha_donacion=data['Fecha de donación'],
             titulo_libro=data['Titulo del libro'],
             nombre_autor=data['Nombre del autor'],
-            cant_libros_donados=['Cantidad donada'],
-            recibido=['Estado']
+            cant_libros_donados=data['Cantidad donada'],
+            recibido=data['Estado']
         )

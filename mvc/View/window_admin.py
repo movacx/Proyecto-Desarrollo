@@ -18,16 +18,12 @@ class InterfazAdmin:
         self._barra_laterial() 
         self._buttons()      
 
-
-# window_admin.py
-
     def _cambiar_panel(self, tipo_panel):
         if self.panel_activo is not None:
             self.panel_activo.contenedor.destroy()
 
         if tipo_panel is not None:
-            self.panel_activo = tipo_panel(self.campo_derecho,self.controller
-            )
+            self.panel_activo = tipo_panel(self.campo_derecho,self.controller)
             
 #-=======================================================[PANEL DERECHO]============================================================================
     def _parte_derecha(self):

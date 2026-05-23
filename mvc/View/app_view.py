@@ -10,12 +10,10 @@ class VentanaPrincipal:
         self.ventana.title('Principal - Biblioteca CoopePuntarenas')
         self.ventana.configure(bg='white')
 
-
         self.clase_libro = panel_libro
         self.clase_donativo = panel_donacion
         self.panel_activo = None
         self.clase_administrativa = panel_administrativo
-
 
         self._bar_menu()
         self._parte_derecha()  
@@ -27,7 +25,7 @@ class VentanaPrincipal:
         if self.panel_activo is not None:
             self.panel_activo.contenedor.destroy()        
         if tipo_panel is not None:
-            self.panel_activo = tipo_panel(self.campo_derecho) #Se inyecta el frame mediante la clase.
+            self.panel_activo = tipo_panel(self.campo_derecho,self.manejo_controller)
             
 
 
@@ -36,19 +34,19 @@ class VentanaPrincipal:
         self.campo_derecho = tk.Frame(self.ventana)
         self.campo_derecho.pack(side='right',fill='both', expand=True)
 
-#-=======================================================[FIN DERECHO]============================================================================
 
-#--Intocable--:
+
+
+
 #-=======================================================[PANEL IZQUIERDO]============================================================================
     def _barra_laterial(self):
-        self.barra_lateral = tk.Frame(self.ventana, bg="#6E7070")#,width = 400)
+        self.barra_lateral = tk.Frame(self.ventana, bg="#6E7070")
         self.barra_lateral.pack(side='left', fill='y')
         self.barra_lateral.pack_propagate(False)
-        
-                          #Lo deje asi para hacer mas ancho la barra ya que no pude con el width
         tk.Label(self.barra_lateral, text = '     Navegacion       ', font = ('Arial', 12, 'bold'),bg="#6E7070").grid(row=0,column=0, padx = 10, pady = 10)
 
     def _buttons(self):
+        #boton ver_libros
         self.btn_ver_libros =  tk.Button(self.barra_lateral, text = '📚Ver libros',
                                          bg="#6E7070",
                                          fg = 'white',
@@ -59,7 +57,8 @@ class VentanaPrincipal:
                                          anchor = 'w',command=lambda :  self._cambiar_panel(self.clase_libro))
         
         self.btn_ver_libros.grid(row = 1, column = 0, pady = 5, sticky = 'we')
-        #=-----------------------------------------------------------------------------------------
+
+        #boton donar_libros
         self.btn_donar_libros = tk.Button(self.barra_lateral, text = '🫂Donar Libros',
                                          bg="#6E7070",
                                          fg = 'white',
@@ -69,7 +68,8 @@ class VentanaPrincipal:
                                          pady = 8,
                                          anchor = 'w', command = lambda:self._cambiar_panel(self.clase_donativo))
         self.btn_donar_libros.grid(row = 2, column = 0, pady = 5, sticky = 'we')
-        #=-----------------------------------------------------------------------------------------
+
+        #boton pedir_prestamo
         self.btn_pedir_prestamo = tk.Button(self.barra_lateral, text = '🧾Solicitar Prestamo',
                                             bg = '#6E7070',
                                             fg='white',
@@ -78,7 +78,8 @@ class VentanaPrincipal:
                                             pady = 5,
                                             anchor = 'w')
         self.btn_pedir_prestamo.grid(row=3, column = 0, pady = 5, sticky = 'we')
-        #=-----------------------------------------------------------------------------------------
+
+
     def _cargar_boton_administrativo(self):
         self.btn_administrativo = tk.Button(self.barra_lateral, text = '📇Panel Administrativo',
                                             bg = '#6E7070',
@@ -87,7 +88,7 @@ class VentanaPrincipal:
                                             padx = 5,
                                             pady = 5,
                                             anchor = 'w',
-                                            command = lambda: self.clase_administrativa(self.ventana))
+                                            command = lambda: self.clase_administrativa.mostrar_ventana())
         self.btn_administrativo.grid(row=4, column=0, pady=370, sticky='we')
 
     #-=======================================================[FIN IZQUIERDO]============================================================================
@@ -108,10 +109,6 @@ class VentanaPrincipal:
         help_menu.add_command(label='Informacion')
         help_menu.add_separator()
         
-    #-=======================================================[Boton administrativo============================================================================
-
-
-    #----Fin intocable----
 
 
 
