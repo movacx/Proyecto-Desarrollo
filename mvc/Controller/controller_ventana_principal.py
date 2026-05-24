@@ -29,7 +29,7 @@ class Ventana:
         self.service.registrar_libro(autor,titulo,int(cantidad),cedula_usuario)
 
     def recibir_registros(self, panel):
-
-        arreglo = self.service.listar_registros()
+        cedula_usuario = self.controller_login.cliente_recibido.identificador
+        arreglo = self.service.buscar_registro(cedula_usuario)
 
         panel.insertar_tabla(arreglo)

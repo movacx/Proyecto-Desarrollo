@@ -6,6 +6,15 @@
         "Titulo del libro": "Los juegos del hambre",
         "Nombre del autor": "Suzanne Collins",
         "Cantidad donada": 12,
-        "Estado": false
+        "Estado": true
+    },
+    {
+        "Donación N°": 2488,
+        "Cliente": "604800208",
+        "Fecha de donación": "2026-05-23",
+        "Titulo del libro": "1984",
+        "Nombre del autor": "George Orwell",
+        "Cantidad donada": 16,
+        "Estado": true
     }
 ]

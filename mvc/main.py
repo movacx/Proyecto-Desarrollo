@@ -21,7 +21,7 @@ def main():
     service_donativo = DonativoService(repo)
 
     # ================= CONTROLLERS =================
-    controller_admin = VentanaAdministrativa(root,service_libro)
+    controller_admin = VentanaAdministrativa(root,service_libro,service_donativo)
     controller_login = LoginController(root,service_cliente,Ventana,service_donativo,controller_admin)
 
     root.mainloop()
@@ -29,3 +29,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+    
+

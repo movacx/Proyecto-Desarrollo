@@ -94,5 +94,29 @@
         "Stock": 56,
         "Estado": "Disponible",
         "Categoria": "Suspenso"
+    },
+    {
+        "Libro N°": "1634",
+        "Titulo": "Los juegos del hambre",
+        "Autor": "Suzanne Collins",
+        "Stock": 12,
+        "Estado": "Disponible",
+        "Categoria": "Drama"
+    },
+    {
+        "Libro N°": "2488",
+        "Titulo": "1984",
+        "Autor": "George Orwell",
+        "Stock": 16,
+        "Estado": "Disponible",
+        "Categoria": "Ciencia Ficcion"
+    },
+    {
+        "Libro N°": 391,
+        "Titulo": "El nombre del viento",
+        "Autor": "Patrick Rothfuss",
+        "Stock": 2,
+        "Estado": "Disponible",
+        "Categoria": "Fantasia"
     }
 ]

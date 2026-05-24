@@ -63,6 +63,12 @@ class Repository(Generic[T]):
             if str(item.get_id()) == str(id):
                 return item
         return None
+    def mostrar_historial(self, id):
+        resultado = []
+        for items in self.datos:
+            if str(items.id_cliente) == str(id):
+                resultado.append(items)
+        return resultado
     #----------------------------------------
     def modificar(self, modificar_obj):
         indice = 0

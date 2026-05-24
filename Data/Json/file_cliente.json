@@ -19,7 +19,7 @@
         "Cliente": "604860994",
         "Nombre": "Vladimir Sancho Venegas",
         "Correo": "vladimirsancho55@gmail.com",
-        "Contraseña": "Vlad7m7rSv#@",
+        "Contraseña": "12341232",
         "Rol": "Usuario",
         "Ped": "Tiburon Blanco"
     },
@@ -28,23 +28,7 @@
         "Nombre": "1",
         "Correo": "1",
         "Contraseña": "1",
-        "Rol": "Admin",
+        "Rol": "Usuario",
         "Ped": "1"
-    },
-    {
-        "Cliente": "2",
-        "Nombre": "2",
-        "Correo": "2",
-        "Contraseña": "2",
-        "Rol": "Usuario",
-        "Ped": "2"
-    },
-    {
-        "Cliente": "6784093323",
-        "Nombre": "Gustavo",
-        "Correo": "gustavo@gmail.com",
-        "Contraseña": "12345",
-        "Rol": "Usuario",
-        "Ped": "perro"
     }
 ]

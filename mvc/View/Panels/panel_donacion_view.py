@@ -62,7 +62,7 @@ class DonativoView:
                                 bg = "#0E0909",
                                 fg = "#FFFFFF",
                                 bd=0,
-                                command = lambda: self.manejo_controller.donar_libro()  )
+                                command = lambda: self.manejo_controller.donar_libro())
         
         self.enviar.grid(row = 5, column =0, columnspan = 2,pady = 20)
 
@@ -84,7 +84,7 @@ class DonativoView:
             estado = items.recibido
 
             if estado == False:
-                pass
+                _estado = 'Pendiente'
             else:
                 _estado = 'Recibido y procesado'
 

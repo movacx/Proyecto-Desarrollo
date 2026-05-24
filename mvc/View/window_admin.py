@@ -4,12 +4,14 @@ from tkinter import ttk, messagebox
 #archivo windows_Admin.py
 
 class InterfazAdmin:
-    def __init__(self, controller,root, panel_libro):
+    def __init__(self, controller,root, panel_libro, gestor_donaciones):
         self.ventana = tk.Toplevel(root)
         self.ventana.configure(bg='white')
-        self.ventana.geometry('1024x600')
+        self.ventana.geometry('1280x768')
+        self.ventana.title('Panel administrativo - Biblioteca CoopePuntarenas')
         self.controller = controller
         self.clase_registro_libro = panel_libro
+        self.clase_gestor_donaciones = gestor_donaciones
         
         
         self.panel_activo = None
@@ -59,7 +61,8 @@ class InterfazAdmin:
                                          bd=0,
                                          padx = 15,
                                          pady = 8,
-                                         anchor = 'w')
+                                         anchor = 'w',
+                                         command = lambda: self._cambiar_panel(self.clase_gestor_donaciones))
         self.btn_donar_libros.grid(row = 2, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
         self.btn_pedir_prestamo = tk.Button(self.barra_lateral, text = '🧾Administrar prestamos',

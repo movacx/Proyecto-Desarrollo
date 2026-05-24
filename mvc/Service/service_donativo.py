@@ -25,5 +25,10 @@ class DonativoService:
         
         self.repo.agregar(nuevo_donativo)
 
+    def buscar_registro(self, id):
+        return self.repo.mostrar_historial(id)
+    
     def listar_registros(self):
         return self.repo.listar()
+    
+    
