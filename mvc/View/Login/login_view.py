@@ -11,12 +11,14 @@ class Login:
         self.ventana.geometry('700x900')
         self.ventana.title('Login - | Biblioteca CoopePuntarenas |')
         
-        #settings
-        self.ventana.configure(bg="#6E7070")
 
         #Frame
         self.contenedor = tk.Frame(self.ventana, padx = 40, pady = 40)#, #bg="#29274C")
         self.contenedor.grid(row = 1, column=1)
+        
+        #settings
+        self.ventana.configure(bg="black")
+        self.contenedor.configure(bg='white')
 
         #Llamados
         self._row_columns_configure()
@@ -28,31 +30,40 @@ class Login:
 
 
     def _labels(self):
-        tk.Label(self.contenedor, text = '| Biblioteca CoopePuntarenas |', font = ('Arial', 12, 'bold')).grid(row=0,column=0, 
+        tk.Label(self.contenedor, text = '| Biblioteca CoopePuntarenas |', font = ('Arial', 12, 'bold'),bg='white').grid(row=0,column=0, 
                                                                                                               columnspan=2, 
                                                                                                               pady=(0,20),
                                                                                                               sticky='nswe')
         #______________________________________________________________________________________________________________________
-        tk.Label(self.contenedor, text = 'Correo:').grid(row=1, column = 0, sticky = 'w', pady = 5)
-        tk.Label(self.contenedor, text = 'Contraseña:').grid(row=2, column = 0, sticky = 'w', pady = 5)
+        tk.Label(self.contenedor, text = 'Correo:',bg='white').grid(row=1, column = 0, sticky = 'w', pady = 5)
+        tk.Label(self.contenedor, text = 'Contraseña:',bg='white').grid(row=2, column = 0, sticky = 'w', pady = 5)
 
     #-==--=-=-==--=-=-=-=-=-=-=-=-==--=-=-=-=-==--=-==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=-=-==--==--=-=-=-==--=-=-=-=-=-=-=-=-=-==--=-=-=-=-=-=-=-=-=-=-=-=-==--=-==-
     def _entry(self): #identificador, nombre, correo, passw, rol
-        self.entry_correo = tk.Entry(self.contenedor, width = 40)
+        self.entry_correo = tk.Entry(self.contenedor, width = 40,bd=0,bg="#E3E3E3")
         self.entry_correo.grid(row = 1, column = 1, sticky = 'we',padx=(10,0))
 
-        self.entry_password = tk.Entry(self.contenedor, show="#")
+        self.entry_password = tk.Entry(self.contenedor, show="#",bd=0,bg="#E3E3E3")
         self.entry_password.grid(row=2, column = 1, sticky = 'we',padx=(10,0))
 
     #-==--=-=-==--=-=-=-=-=-=-=-=-==--=-=-=-=-==--=-==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=-=-==--==--=-=-=-==--=-=-=-=-=-=-=-=-=-==--=-=-=-=-=-=-=-=-=-=-=-=-==--=-==-
     def _buttons(self):
-        self.btn_acceder = tk.Button(self.contenedor, text = 'Ingresar', command = lambda: self.manejo_controller.acceder())
+        self.btn_acceder = tk.Button(self.contenedor, text = 'Ingresar', command = lambda: self.manejo_controller.acceder(),
+                                     bd = 0,
+                                     bg = '#DDE0E0',
+                                     fg = 'black')
         self.btn_acceder.grid(row = 3, column = 1, sticky = 'we', pady = 10)
 
-        self.btn_registrarse = tk.Button(self.contenedor, text = 'Registro', command = lambda: self.manejo_controller.btn_registrarse())
+        self.btn_registrarse = tk.Button(self.contenedor, text =   '   Registro   ', command = lambda: self.manejo_controller.btn_registrarse(),
+                                         bd = 0,
+                                         bg = "#DDE0E0",
+                                         fg = 'black')
         self.btn_registrarse.grid(row=3, column = 0, sticky = 'w', pady = 10)
 
-        self.btn_recuperar_pass = tk.Button(self.contenedor, text = 'Olvide mi contraseña', command = lambda: self.manejo_controller.btn_recuperar_contrasenna())
+        self.btn_recuperar_pass = tk.Button(self.contenedor, text = 'Recuperar Contraseña', command = lambda: self.manejo_controller.btn_recuperar_contrasenna(),
+                                             bd = 0,
+                                             bg = "#DDE0E0",
+                                             fg = 'black')
         self.btn_recuperar_pass.grid(row=4, column = 0, sticky = 'nswe',columnspan=3)
 
     #-==--=-=-==--=-=-=-=-=-=-=-=-==--=-=-=-=-==--=-==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-==--=-=-=-==--==--=-=-=-==--=-=-=-=-=-=-=-=-=-==--=-=-=-=-=-=-=-=-=-=-=-=-==--=-==-

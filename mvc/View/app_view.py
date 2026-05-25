@@ -40,15 +40,15 @@ class VentanaPrincipal:
 
 #-=======================================================[PANEL IZQUIERDO]============================================================================
     def _barra_laterial(self):
-        self.barra_lateral = tk.Frame(self.ventana, bg="#6E7070")
+        self.barra_lateral = tk.Frame(self.ventana, bg="#000000")
         self.barra_lateral.pack(side='left', fill='y')
         self.barra_lateral.pack_propagate(False)
-        tk.Label(self.barra_lateral, text = '     Navegacion       ', font = ('Arial', 12, 'bold'),bg="#6E7070").grid(row=0,column=0, padx = 10, pady = 10)
+        tk.Label(self.barra_lateral, text = '     Navegacion       ', font = ('Arial', 11, 'bold underline'),bg="#000000",fg='white').grid(row=0,column=0, padx = 10, pady = 10)
 
     def _buttons(self):
         #boton ver_libros
         self.btn_ver_libros =  tk.Button(self.barra_lateral, text = '📚Ver libros',
-                                         bg="#6E7070",
+                                         bg="#000000",
                                          fg = 'white',
                                          font = ('Arial', 11, 'bold'),
                                          bd=0,
@@ -60,7 +60,7 @@ class VentanaPrincipal:
 
         #boton donar_libros
         self.btn_donar_libros = tk.Button(self.barra_lateral, text = '🫂Donar Libros',
-                                         bg="#6E7070",
+                                         bg="#000000",
                                          fg = 'white',
                                          font = ('Arial', 11, 'bold'),
                                          bd=0,
@@ -71,9 +71,10 @@ class VentanaPrincipal:
 
         #boton pedir_prestamo
         self.btn_pedir_prestamo = tk.Button(self.barra_lateral, text = '🧾Solicitar Prestamo',
-                                            bg = '#6E7070',
+                                            bg = "#000000",
                                             fg='white',
                                             font = ('Arial', 11, 'bold'),
+                                            bd=0,
                                             padx = 5,
                                             pady = 5,
                                             anchor = 'w')
@@ -82,9 +83,10 @@ class VentanaPrincipal:
 
     def _cargar_boton_administrativo(self):
         self.btn_administrativo = tk.Button(self.barra_lateral, text = '📇Panel Administrativo',
-                                            bg = '#6E7070',
-                                            fg='white',
+                                            bg = "#FFFFFF",
+                                            fg='black',
                                             font = ('Arial', 11, 'bold'),
+                                            bd = 0,
                                             padx = 5,
                                             pady = 5,
                                             anchor = 'w',
