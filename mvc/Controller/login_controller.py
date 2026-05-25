@@ -3,9 +3,10 @@ from View.Login.register_view import Registro
 from View.Login.recover_view import RecuperarPass
 
 class LoginController:
-    def __init__(self,root,service,ventanaPrincipal,service_donativo,controller_admin):
+    def __init__(self,root,service,ventanaPrincipal,service_donativo,controller_admin,service_libro):
         self.cliente_recibido = None
         self.service = service
+        self.service_libro = service_libro
         self.ventana = root
         self.ventana_principal = ventanaPrincipal
         self.service_donativo = service_donativo
@@ -21,7 +22,7 @@ class LoginController:
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
     def btn_cargar_pantalla_principal(self):
         self.GUI_Login.contenedor.destroy()
-        self.contenedor_principal = self.ventana_principal(self,self.ventana,self.service_donativo,self.controller_admin)
+        self.contenedor_principal = self.ventana_principal(self,self.ventana,self.service_donativo,self.controller_admin,self.service_libro)
     #=--=-==-=-=-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
     def registrar_usuario(self):
@@ -71,7 +72,7 @@ class LoginController:
         elif self.cliente_recibido.rol == 'Admin':
             print('Accediendo con el usuario administrativo:', self.cliente_recibido)
             self.GUI_Login.contenedor.destroy()
-            self.contenedor_principal = self.ventana_principal(self,self.ventana,self.service_donativo,self.controller_admin)
+            self.contenedor_principal = self.ventana_principal(self,self.ventana,self.service_donativo,self.controller_admin,self.service_libro)
 
             self.contenedor_principal.mostrar_ventana()
             self.contenedor_principal.cargar()

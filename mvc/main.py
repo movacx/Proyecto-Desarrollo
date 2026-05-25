@@ -22,7 +22,7 @@ def main():
 
     # ================= CONTROLLERS =================
     controller_admin = VentanaAdministrativa(root,service_libro,service_donativo)
-    controller_login = LoginController(root,service_cliente,Ventana,service_donativo,controller_admin)
+    controller_login = LoginController(root,service_cliente,Ventana,service_donativo,controller_admin,service_libro)
 
     root.mainloop()
 

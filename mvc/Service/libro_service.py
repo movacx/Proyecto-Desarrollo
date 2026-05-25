@@ -67,6 +67,34 @@ class LibroService:
         self.repo.agregar(nuevo)
         #-==-=--=-==-=--==-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-#
 
+    def listar_libros(self):
+        arreglo = self.repo.listar()
+        return arreglo
 
+
+    def buscar_libro(self, titulo_libro):
+        lista_libros = self.repo.listar()
+        resultado = []
         
+        for items in lista_libros:
+            
+            if titulo_libro.lower() in items.titulo.lower():
+                resultado.append(items)
+            
+        if not resultado:
+            raise ValueError('No se han encontrado coincidencias')
 
+        return resultado
+
+    def filtrar_categoria(self, categoria): #Categoria se obtiene de la opcion del combobox.get()
+        lista_libros = self.repo.listar()
+        resultado = []
+        
+        for items in lista_libros: #Ya hay registros con = [Fantasia, Romance, Drama, Infantil]
+            if items.categoria.lower() == categoria.lower():
+                resultado.append(items)
+        
+        if not resultado:
+            raise ValueError('No se han encontrado coincidencias')
+
+        return resultado

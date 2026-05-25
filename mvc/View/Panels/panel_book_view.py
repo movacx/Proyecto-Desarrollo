@@ -42,10 +42,11 @@ class PanelLibros:
                                         bd=0,
                                         padx = 15,
                                         pady = 8,
-                                        anchor = 'w')
+                                        anchor = 'w',
+                                        command = lambda: self.controller.cargar_filtrado_nombre(self))
         self.boton_buscar.grid(row=1,column=2,sticky='w', padx = (0,5), pady = 5)
 
-        columnas = ['ID','Titulo','Autor','Inventario','Estante N°']
+        columnas = ['ID','Titulo','Autor']
         self.tabla_libro = ttk.Treeview(self.contenedor, column = columnas, show = 'headings')
         self.tabla_libro.grid(row = 3, column = 0, sticky = 'nswe',columnspan=3,rowspan=3,pady = 10, padx = (5,5))
 
@@ -57,11 +58,25 @@ class PanelLibros:
                                         bd=0,
                                         padx = 15,
                                         pady = 8,
-                                        anchor = 'w')
+                                        anchor = 'w',
+                                        command = lambda: self.controller.cargar_filtrado_categoria(self))
         self.btn_filtrar.grid(row=2,column=2,sticky='w', padx = (0,5), pady = 5)
 
         for items in columnas:
             self.tabla_libro.heading(items, text = items)
 
+    def insertar_tabla(self, arreglo):
+        # self.id_libro = id_libro
+        # self.titulo = titulo
+        # self.autor = autor
+        for items in arreglo:
+            if items:
+                id = items.id_libro
+                autor = items.autor
+                titulo = items.titulo
+                self.tabla_libro.insert('',tk.END, values = (id,autor,titulo))
 
+    def limpiar_tabla(self):
+        for items in self.tabla_libro.get_children():
+            self.tabla_libro.delete(items)
 
