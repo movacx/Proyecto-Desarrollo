@@ -1,12 +1,13 @@
 #archivo: prestamo_model.py
 
 class Prestamo:
-    def __init__(self, id_prestamo:str, id_libro:str, id_cliente:str, fecha_prestamo:str, fecha_devolucion:str)->None:
+    def __init__(self, id_prestamo:str, id_libro:str, id_cliente:str, fecha_prestamo:str, fecha_devolucion:str, moroso:bool)->None:
         self.id_prestamo = id_prestamo
         self.id_libro = id_libro
         self.id_cliente = id_cliente
         self.fecha_prestamo = fecha_prestamo
         self.fecha_devolucion = fecha_devolucion
+        self.moroso = moroso
 
     def get_id(self):
         return self.id_prestamo
@@ -17,7 +18,8 @@ class Prestamo:
             'Libro':self.id_libro,
             'Cliente':self.id_cliente,
             'Fecha del Prestamo':self.fecha_prestamo,
-            'Fecha de devolución':self.fecha_devolucion
+            'Fecha de devolución':self.fecha_devolucion,
+            'Moroso': self.moroso
         }
 
     @classmethod
