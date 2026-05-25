@@ -8,7 +8,7 @@ class Login:
         #Params
         self.manejo_controller = controller
         self.ventana = root
-        self.ventana.geometry('700x900')
+        self.ventana.geometry('600x500')
         self.ventana.title('Login - | Biblioteca CoopePuntarenas |')
         
 
