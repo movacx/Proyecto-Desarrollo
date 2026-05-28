@@ -1,14 +1,18 @@
 import tkinter as tk
 
-from Controller.login_controller import LoginController
-from Controller.controller_ventana_principal import Ventana
-from Controller.controller_ventana_adm import VentanaAdministrativa
+from Controller.registro_controller import LoginController
+from Controller.usuario_controller import ControladorVentanaPrincipal
+from Controller.administrador_controller import ControladorVentanaAdministrativa
 
 from Repository.repositorio import Repository
 
 from Service.cliente_service import ClienteService
 from Service.libro_service import LibroService
-from Service.service_donativo import DonativoService
+from Service.donacion_service import DonativoService
+from Service.prestamo_service import ServicePrestamo
+
+
+from datetime import datetime
 
 
 def main():
@@ -19,13 +23,14 @@ def main():
     service_cliente = ClienteService(repo)
     service_libro = LibroService(repo)
     service_donativo = DonativoService(repo)
+    service_prestamo = ServicePrestamo(repo, service_libro)
 
     # ================= CONTROLLERS =================
-    controller_admin = VentanaAdministrativa(root,service_libro,service_donativo)
-    controller_login = LoginController(root,service_cliente,Ventana,service_donativo,controller_admin,service_libro)
+    controller_admin = ControladorVentanaAdministrativa(root,service_libro,service_donativo)
+    controller_login = LoginController(root,service_cliente,ControladorVentanaPrincipal,service_donativo,controller_admin,service_libro,service_prestamo)
 
     root.mainloop()
-
+    
 
 if __name__ == '__main__':
     main()

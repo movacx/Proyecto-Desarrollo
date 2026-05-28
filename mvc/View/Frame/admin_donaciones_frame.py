@@ -17,7 +17,7 @@ class AdministradorLibros:
         self.forms()
         self.buttons()
 
-        self.manejo_controller.recibir_registros(self)
+        self.cargar()
 
         #Evento
         self.tabla.bind('<<TreeviewSelect>>', self.obtener_seleccion)
@@ -30,6 +30,9 @@ class AdministradorLibros:
         # "Cantidad donada": 12,
         # "Estado": false
 
+
+    def cargar(self):
+        self.manejo_controller.recibir_registros(self)
 
     def separador(self, x,y):
         tk.Label(self.contenedor, text='',bg='white').grid(row=x,column=y)

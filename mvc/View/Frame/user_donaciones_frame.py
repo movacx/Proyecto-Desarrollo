@@ -19,10 +19,16 @@ class DonativoView:
         self._buttons()
         self._table()
 
-        self.manejo_controller.recibir_registros(self)
+        
 
         self._insertar_dni(self.manejo_controller.controller_login.cliente_recibido.identificador)
         self.entry_dni_cliente.config(state='disabled')
+
+        self.cargar()
+
+
+    def cargar(self):
+        self.manejo_controller.recibir_registros(self)
 
     def _labels(self):
         tk.Label(self.contenedor, text = '|Biblioteca Comunitaria CoopePuntarenas - Donar Libros|', font = ('Arial',11,'bold'),bg='white').grid(row=0,
@@ -90,6 +96,15 @@ class DonativoView:
 
 
             self.tabla.insert('',tk.END, values = (id,autor,titulo,cant,_estado))
+
+    def limpiar_tabla(self):
+        for items in self.tabla.get_children():
+            self.tabla.delete(items)
+
+    def limpiar_campos(self):
+        self.entry_cantidad.delete(0, tk.END)
+        self.entry_nombre_autor.delete(0, tk.END)
+        self.entry_titulo.delete(0, tk.END)
 
     def _insertar_dni(self, dni):
         self.entry_dni_cliente.delete(0, tk.END)

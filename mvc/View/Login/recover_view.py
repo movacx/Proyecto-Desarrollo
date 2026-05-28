@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 
 
-#archivo recover_view.py
-
 class RecuperarPass:
     def __init__(self, controller, root):
         self.manejo_controller = controller

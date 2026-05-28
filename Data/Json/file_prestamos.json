@@ -1,0 +1,11 @@
+[
+    {
+        "Prestamo N°": 428,
+        "Libro": "992",
+        "Cliente": "604800208",
+        "Fecha del Prestamo": "27/05/2026",
+        "Fecha de devolución": "3/6/2026",
+        "Moroso": false,
+        "Estado Prestamo": false
+    }
+]

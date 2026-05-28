@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 
 #archivo app_view.py
 class VentanaPrincipal:
-    def __init__(self, controller, root, panel_libro, panel_donacion, panel_administrativo, ):
+    def __init__(self, controller, root, panel_libro, panel_donacion, panel_prestamo, panel_devolver_prestamo, panel_administrativo):
         self.manejo_controller = controller
         self.ventana = root
         self.ventana.geometry('1366x768')
@@ -14,6 +14,8 @@ class VentanaPrincipal:
         self.clase_donativo = panel_donacion
         self.panel_activo = None
         self.clase_administrativa = panel_administrativo
+        self.clase_prestamo = panel_prestamo
+        self.clase_devolver_prestamo = panel_devolver_prestamo
 
         self._bar_menu()
         self._parte_derecha()  
@@ -77,8 +79,20 @@ class VentanaPrincipal:
                                             bd=0,
                                             padx = 5,
                                             pady = 5,
-                                            anchor = 'w')
+                                            anchor = 'w',
+                                            command=lambda : self._cambiar_panel(self.clase_prestamo))
         self.btn_pedir_prestamo.grid(row=3, column = 0, pady = 5, sticky = 'we')
+
+        self.btn_devolver_prestamo = tk.Button(self.barra_lateral, text = '🗃️Administrar mis prestamos',
+                                            bg = "#000000",
+                                            fg='white',
+                                            font = ('Arial', 11, 'bold'),
+                                            bd=0,
+                                            padx = 5,
+                                            pady = 5,
+                                            anchor = 'w',
+                                            command=lambda : self._cambiar_panel(self.clase_devolver_prestamo))
+        self.btn_devolver_prestamo.grid(row=4, column = 0, pady = 5, sticky = 'we')
 
 
     def _cargar_boton_administrativo(self):
@@ -91,7 +105,7 @@ class VentanaPrincipal:
                                             pady = 5,
                                             anchor = 'w',
                                             command = lambda: self.clase_administrativa.mostrar_ventana())
-        self.btn_administrativo.grid(row=4, column=0, pady=370, sticky='we')
+        self.btn_administrativo.grid(row=5, column=0, pady=370, sticky='we')
 
     #-=======================================================[FIN IZQUIERDO]============================================================================
 
@@ -101,7 +115,7 @@ class VentanaPrincipal:
 
         file_menu = tk.Menu(menu)
         menu.add_cascade(label='Usuario', menu = file_menu)
-        file_menu.add_command(label='Configuracion')
+        file_menu.add_command(label='Configuracion', command = lambda: self.mostrar_mensaje('Pene'))
         file_menu.add_separator()
         file_menu.add_command(label='Exit', command = self.ventana.quit)
 
@@ -112,7 +126,11 @@ class VentanaPrincipal:
         help_menu.add_separator()
         
 
+    def mostrar_adv(self, error):
+        messagebox.showwarning('Advertencia',error, parent = self.ventana)
 
+    def mostrar_mensaje(self, mensaje):
+        messagebox.showinfo('Informacion', mensaje, parent=self.ventana)
 
 if __name__ == '__main__':
     root = tk.Tk()

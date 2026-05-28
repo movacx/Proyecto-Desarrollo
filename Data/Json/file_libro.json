@@ -118,5 +118,37 @@
         "Stock": 2,
         "Estado": "Disponible",
         "Categoria": "Fantasia"
+    },
+    {
+        "Libro N°": "913",
+        "Titulo": "El retrato de Dorian Gray",
+        "Autor": "Oscar Wilde",
+        "Stock": 3,
+        "Estado": "Disponible",
+        "Categoria": "Fantasia"
+    },
+    {
+        "Libro N°": "2933",
+        "Titulo": "Moby Dick",
+        "Autor": "Herman Melville",
+        "Stock": 6,
+        "Estado": "Disponible",
+        "Categoria": "Drama"
+    },
+    {
+        "Libro N°": 6165,
+        "Titulo": "Moby Dick",
+        "Autor": "Herman Melville",
+        "Stock": 6,
+        "Estado": "Disponible",
+        "Categoria": "Drama"
+    },
+    {
+        "Libro N°": 4374,
+        "Titulo": "Moby Dick",
+        "Autor": "Herman Melville",
+        "Stock": 6,
+        "Estado": "Disponible",
+        "Categoria": "Drama"
     }
 ]

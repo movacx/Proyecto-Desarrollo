@@ -43,33 +43,33 @@ class Repository(Generic[T]):
 
         with open(self.file, 'w', encoding='utf-8') as file:
             json.dump(datos_para_guardar, file, indent=4, ensure_ascii=False)
+            return True
 
-    #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
-
+    #----------------------------- Funciones principales ---------------------------#
     def agregar(self, objeto)->bool:
         self.datos.append(objeto)
         return self._save()
-    #----------------------------------------
     def listar(self)->list:
         return self.datos
-    #----------------------------------------
     def existe_id(self, id: str):
         for item in self.datos:
             if str(item.get_id()) == str(id):
                 return True
         return False
+    #---------------------------- Otras funciones ----------------------------------#
     def buscar_id(self, id: str):
         for item in self.datos:
             if str(item.get_id()) == str(id):
                 return item
         return None
+    
     def mostrar_historial(self, id):
         resultado = []
         for items in self.datos:
             if str(items.id_cliente) == str(id):
                 resultado.append(items)
         return resultado
-    #----------------------------------------
+    
     def modificar(self, modificar_obj):
         indice = 0
         for items in self.datos:
@@ -79,13 +79,14 @@ class Repository(Generic[T]):
                 return True
             indice += 1
         return False
-    #----------------------------------------
+
 
 
 
         
         
     
+
 
 
 
