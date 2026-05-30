@@ -65,14 +65,14 @@ class InterfazAdmin:
                                          command = lambda: self._cambiar_panel(self.clase_gestor_donaciones))
         self.btn_donar_libros.grid(row = 2, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
-        self.btn_pedir_prestamo = tk.Button(self.barra_lateral, text = '🧾Administrar prestamos',
-                                            bg = '#6E7070',
-                                            fg='white',
-                                            font = ('Arial', 11, 'bold'),
-                                            padx = 5,
-                                            pady = 5,
-                                            anchor = 'w')
-        self.btn_pedir_prestamo.grid(row=3, column = 0, pady = 5, sticky = 'we')
+        # self.btn_pedir_prestamo = tk.Button(self.barra_lateral, text = '🧾Administrar prestamos',
+        #                                     bg = '#6E7070',
+        #                                     fg='white',
+        #                                     font = ('Arial', 11, 'bold'),
+        #                                     padx = 5,
+        #                                     pady = 5,
+        #                                     anchor = 'w')
+        # self.btn_pedir_prestamo.grid(row=3, column = 0, pady = 5, sticky = 'we')
         #=-----------------------------------------------------------------------------------------
 
     def mostrar_adv(self, error):

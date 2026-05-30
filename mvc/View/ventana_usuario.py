@@ -115,7 +115,7 @@ class VentanaPrincipal:
 
         file_menu = tk.Menu(menu)
         menu.add_cascade(label='Usuario', menu = file_menu)
-        file_menu.add_command(label='Configuracion', command = lambda: self.mostrar_mensaje('Pene'))
+        file_menu.add_command(label='Configuracion', command = lambda: self.clase_administrativa.mostrar_ventana())
         file_menu.add_separator()
         file_menu.add_command(label='Exit', command = self.ventana.quit)
 

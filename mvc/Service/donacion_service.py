@@ -40,4 +40,12 @@ class DonativoService:
     def listar_registros(self):
         return self.repo.listar()
     
+
     
+    #---------------------------------------------------------------------------------------#
+    #clase aparte: Encargada de eliminar una donacion (aplica despues de que haya sido aprobada)
+    def eliminar_donacion(self, id):
+        if self.repo.eliminar(id):
+            return 'Eliminado con exito'
+        else:
+            return 'No se encontro el id'

@@ -1,13 +1,13 @@
 import json
 import os
 
-from typing import TypeVar, Generic, Callable
+from typing import TypeVar, Generic
 
 #archivo repositorio.py
 T = TypeVar('T')
 
 class Repository(Generic[T]):
-    def __init__(self, ruta:str, from_dict:Callable[[dict],T])->None:
+    def __init__(self, ruta:str, from_dict)->None:
         
         #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
         self.datos = []
@@ -56,7 +56,28 @@ class Repository(Generic[T]):
             if str(item.get_id()) == str(id):
                 return True
         return False
-    #---------------------------- Otras funciones ----------------------------------#
+    
+    #----------- otras funciones -------------------#
+    def modificar(self, modificar_obj):
+        indice = 0
+        for items in self.datos:
+            if str(items.get_id()) == str(modificar_obj.get_id()):
+                self.datos[indice] = modificar_obj
+                self._save()
+                return True
+            indice += 1
+        return False
+
+    #Metodo para eliminar un objeto del repositorio.
+    def eliminar(self, id):
+        for items in self.datos:
+            if str(items.get_id()) == str(id):
+                self.datos.remove(items)
+                self._save()
+                return True
+        return False
+
+    #---------------------------- Sinceramente son incesesarias con el listar() se hubiera sacado.----------------------------------#
     def buscar_id(self, id: str):
         for item in self.datos:
             if str(item.get_id()) == str(id):
@@ -70,17 +91,6 @@ class Repository(Generic[T]):
                 resultado.append(items)
         return resultado
     
-    def modificar(self, modificar_obj):
-        indice = 0
-        for items in self.datos:
-            if str(items.get_id()) == str(modificar_obj.get_id()):
-                self.datos[indice] = modificar_obj
-                self._save()
-                return True
-            indice += 1
-        return False
-
-
 
 
         

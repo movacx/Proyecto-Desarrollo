@@ -30,6 +30,8 @@ class AdministradorLibros:
         # "Cantidad donada": 12,
         # "Estado": false
 
+        # self.desbloquear_botones()
+
 
     def cargar(self):
         self.manejo_controller.recibir_registros(self)
@@ -96,6 +98,9 @@ class AdministradorLibros:
         self.btn_buscar = tk.Button(self.contenedor, text = 'Filtrar', command = lambda: self.manejo_controller.cargar_filtrado_cliente())
         self.btn_buscar.grid(row=2,column=1, sticky='w', padx = (180,0))
 
+        self.btn_eliminar = tk.Button(self.contenedor, text = 'Rechazar', command = lambda: self.manejo_controller.rechazar_donacion())
+        self.btn_eliminar.grid(row=2,column=2, sticky = 'e', padx = (0,200))
+
     def obtener_seleccion(self, event):
         self.id_seleccionado = self.tabla.selection()
         if self.id_seleccionado:
@@ -111,4 +116,24 @@ class AdministradorLibros:
             self.entry_id.config(state='disabled')
 
 
+    def limpiar_tabla(self):
+        for item in self.tabla.get_children():
+            self.tabla.delete(item)
+    
+    def limpiar_formulario(self):
+        self.entry_cliente.delete(0, tk.END)
+        self.lista_opciones.set('Seleccione')
 
+    def bloquear_botones(self):
+        self.btn_enviar.config(state='disabled')
+
+    def desbloquear_botones(self):
+        self.btn_enviar.config(state='normal')
+
+
+
+    def mostrar_adv(self, error):
+        messagebox.showwarning('Advertencia',error, parent = self.ventana)
+
+    def mostrar_mensaje(self, mensaje):
+        messagebox.showinfo('Informacion', mensaje, parent=self.ventana)

@@ -26,9 +26,16 @@ class ControladorVentanaAdministrativa:
     def cargar_filtrado_cliente(self):
         try:
             panel = self.GUI_ventana_principal.panel_activo
+
+            panel.limpiar_tabla()
+            panel.bloquear_botones()
+
             ide = panel.entry_cliente.get()
+
             arreglo = self.service_donativo.buscar_registro(ide)
-            panel.insertar_tabla(arreglo,1) 
+
+            panel.insertar_tabla(arreglo, 1)
+
         except Exception as error:
             self.GUI_ventana_principal.mostrar_adv(error)
 
@@ -36,15 +43,15 @@ class ControladorVentanaAdministrativa:
     #Funciones del Frame_Admin (Libro)
     def agregar_libro(self):
         try:
-            self.panel = self.GUI_ventana_principal.panel_activo
-            titulo = self.panel.entry_titulo.get()
-            autor = self.panel.entry_autor.get()
-            inventario = self.panel.entry_inventario.get()
-            categoria = self.panel.entry_categoria.get()
+            panel = self.GUI_ventana_principal.panel_activo
+            titulo = panel.entry_titulo.get()
+            autor = panel.entry_autor.get()
+            inventario = panel.entry_inventario.get()
+            categoria = panel.entry_categoria.get()
         
             self.service_libro.registrar_libro(titulo,autor,int(inventario),categoria)
             self.GUI_ventana_principal.mostrar_mensaje('Registrado con exito!')
-            self.panel.cargar()
+            panel.cargar()
         except Exception as error:
             self.GUI_ventana_principal.mostrar_adv(error)
 
@@ -52,15 +59,24 @@ class ControladorVentanaAdministrativa:
     #[Aplica despues de que haya sido aprobada] - USA EL SERVICE LIBRO
     def registrar_donacion(self):
         try:
-            self.panel = self.GUI_ventana_principal.panel_activo
-            ide = self.panel.entry_id.get()
-            categoria = self.panel.lista_opciones.get()
+            panel = self.GUI_ventana_principal.panel_activo
+            ide = panel.entry_id.get()
+            categoria = panel.lista_opciones.get()
             self.service_libro.administrar_donacion(ide, categoria)
         except Exception as error:
             self.GUI_ventana_principal.mostrar_adv(error)
     #-----------------------------------------------------------------------------------------------------#
 
+    def rechazar_donacion(self):
+        try:
+            panel = self.GUI_ventana_principal.panel_activo
+            ide = panel.entry_id.get()
+            panel.limpiar_tabla()
 
+            self.GUI_ventana_principal.mostrar_mensaje(self.service_donativo.eliminar_donacion(ide))
+            self.recibir_registros(panel)
+        except Exception as error:
+            self.GUI_ventana_principal.mostrar_adv(error)
 
     
 

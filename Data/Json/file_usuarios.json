@@ -14,5 +14,13 @@
         "Contraseña": "desarrollocultural2026",
         "Rol": "Admin",
         "Ped": "ucr_tested"
+    },
+    {
+        "Cliente": "1",
+        "Nombre": "1",
+        "Correo": "1",
+        "Contraseña": "1",
+        "Rol": "Admin",
+        "Ped": "1"
     }
 ]
