@@ -61,5 +61,32 @@
         "Fecha de devolución": "07/06/2026",
         "Moroso": false,
         "Estado Prestamo": true
+    },
+    {
+        "Prestamo N°": 202,
+        "Libro": "266",
+        "Cliente": "604800208",
+        "Fecha del Prestamo": "31/05/2026",
+        "Fecha de devolución": "07/06/2026",
+        "Moroso": false,
+        "Estado Prestamo": true
+    },
+    {
+        "Prestamo N°": 318,
+        "Libro": "603",
+        "Cliente": "604800208",
+        "Fecha del Prestamo": "31/05/2026",
+        "Fecha de devolución": "07/06/2026",
+        "Moroso": false,
+        "Estado Prestamo": true
+    },
+    {
+        "Prestamo N°": 121,
+        "Libro": "395",
+        "Cliente": "604800208",
+        "Fecha del Prestamo": "31/05/2026",
+        "Fecha de devolución": "07/06/2026",
+        "Moroso": false,
+        "Estado Prestamo": true
     }
 ]

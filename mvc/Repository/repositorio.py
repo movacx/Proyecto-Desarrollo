@@ -43,6 +43,7 @@ class Repository(Generic[T]):
 
         with open(self.file, 'w', encoding='utf-8') as file:
             json.dump(datos_para_guardar, file, indent=4, ensure_ascii=False)
+            return True
 
     #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
 

@@ -34,7 +34,8 @@ class ServicePrestamo:
             True
         )
 
-        if self.repo_prestamo.agregar(nuevo_prestamo):
+        exito = self.repo_prestamo.agregar(nuevo_prestamo)
+        if exito:
             return 'Solicitado Correctamente!'
         else:
             return 'Error interno.'
