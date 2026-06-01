@@ -1,7 +1,14 @@
-#archivo: prestamo_model.py
-
 class Prestamo:
-    def __init__(self, id_prestamo:str, id_libro:str, id_cliente:str, fecha_prestamo:str, fecha_devolucion:str, moroso:bool, estado:bool)->None:
+    def __init__(
+        self,
+        id_prestamo: str,
+        id_libro: str,
+        id_cliente: str,
+        fecha_prestamo: str,
+        fecha_devolucion: str,
+        moroso: bool,
+        estado: bool
+    ) -> None:
         self.id_prestamo = id_prestamo
         self.id_libro = id_libro
         self.id_cliente = id_cliente
@@ -12,22 +19,23 @@ class Prestamo:
 
     def get_id(self):
         return self.id_prestamo
-    
+
     def set_estado(self, nuevo_estado):
         self.estado = nuevo_estado
 
-    def to_dict(self)->dict:
+    def to_dict(self) -> dict:
         return {
-            'Prestamo N°':self.id_prestamo,
-            'Libro':self.id_libro,
-            'Cliente':self.id_cliente,
-            'Fecha del Prestamo':self.fecha_prestamo,
-            'Fecha de devolución':self.fecha_devolucion,
+            'Prestamo N°': self.id_prestamo,
+            'Libro': self.id_libro,
+            'Cliente': self.id_cliente,
+            'Fecha del Prestamo': self.fecha_prestamo,
+            'Fecha de devolución': self.fecha_devolucion,
             'Moroso': self.moroso,
             'Estado Prestamo': self.estado
         }
 
-    def from_dict(data:dict)->Prestamo:
+    @staticmethod
+    def from_dict(data: dict):
         return Prestamo(
             id_prestamo=data["Prestamo N°"],
             id_libro=data["Libro"],
@@ -35,5 +43,5 @@ class Prestamo:
             fecha_prestamo=data["Fecha del Prestamo"],
             fecha_devolucion=data["Fecha de devolución"],
             moroso=data["Moroso"],
-            estado=data['Estado Prestamo']
+            estado=data["Estado Prestamo"]
         )

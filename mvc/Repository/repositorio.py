@@ -1,13 +1,13 @@
 import json
 import os
 
-from typing import TypeVar, Generic
+from typing import TypeVar, Generic, Callable
 
 #archivo repositorio.py
 T = TypeVar('T')
 
 class Repository(Generic[T]):
-    def __init__(self, ruta:str, from_dict)->None:
+    def __init__(self, ruta:str, from_dict:Callable[[dict],T])->None:
         
         #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
         self.datos = []
@@ -43,21 +43,33 @@ class Repository(Generic[T]):
 
         with open(self.file, 'w', encoding='utf-8') as file:
             json.dump(datos_para_guardar, file, indent=4, ensure_ascii=False)
-            return True
 
-    #----------------------------- Funciones principales ---------------------------#
+    #-=-==-=--=-=-==-=--==--==--=-=-=-==--=-=-=-==--=-=-==--=-=-==--==--=-=-=-==-#
+
     def agregar(self, objeto)->bool:
         self.datos.append(objeto)
         return self._save()
+    #----------------------------------------
     def listar(self)->list:
         return self.datos
+    #----------------------------------------
     def existe_id(self, id: str):
         for item in self.datos:
             if str(item.get_id()) == str(id):
                 return True
         return False
-    
-    #----------- otras funciones -------------------#
+    def buscar_id(self, id: str):
+        for item in self.datos:
+            if str(item.get_id()) == str(id):
+                return item
+        return None
+    def mostrar_historial(self, id):
+        resultado = []
+        for items in self.datos:
+            if str(items.id_cliente) == str(id):
+                resultado.append(items)
+        return resultado
+    #----------------------------------------
     def modificar(self, modificar_obj):
         indice = 0
         for items in self.datos:
@@ -67,36 +79,25 @@ class Repository(Generic[T]):
                 return True
             indice += 1
         return False
+    #----------------------------------------
 
-    #Metodo para eliminar un objeto del repositorio.
-    def eliminar(self, id):
-        for items in self.datos:
-            if str(items.get_id()) == str(id):
-                self.datos.remove(items)
-                self._save()
-                return True
-        return False
+    #parte de los reportes
+    def generar_reporte_general(self):
+        return self.reporte_service.generar_reporte_general()
 
-    #---------------------------- Sinceramente son incesesarias con el listar() se hubiera sacado.----------------------------------#
-    def buscar_id(self, id: str):
-        for item in self.datos:
-            if str(item.get_id()) == str(id):
-                return item
-        return None
-    
-    def mostrar_historial(self, id):
-        resultado = []
-        for items in self.datos:
-            if str(items.id_cliente) == str(id):
-                resultado.append(items)
-        return resultado
-    
+    def listar_libros(self):
+        return self.libro_service.listar_libros()
+
+    def listar_donativos(self):
+        return self.donacion_service.listar_donaciones()
+
+    def listar_prestamos(self):
+        return self.prestamo_service.listar_prestamos()
 
 
         
         
     
-
 
 
 

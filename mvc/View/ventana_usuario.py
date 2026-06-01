@@ -18,17 +18,17 @@ class VentanaPrincipal:
         self.clase_devolver_prestamo = panel_devolver_prestamo
 
         self._bar_menu()
-        self._parte_derecha()  
+        self._parte_derecha()
         self._barra_laterial()
-        self._buttons()       
+        self._buttons()
 
 
     def _cambiar_panel(self, tipo_panel):
         if self.panel_activo is not None:
-            self.panel_activo.contenedor.destroy()        
+            self.panel_activo.contenedor.destroy()
         if tipo_panel is not None:
             self.panel_activo = tipo_panel(self.campo_derecho,self.manejo_controller)
-            
+
 
 
 #-=======================================================[PANEL DERECHO]============================================================================
@@ -57,7 +57,7 @@ class VentanaPrincipal:
                                          padx = 15,
                                          pady = 8,
                                          anchor = 'w',command=lambda :  self._cambiar_panel(self.clase_libro))
-        
+
         self.btn_ver_libros.grid(row = 1, column = 0, pady = 5, sticky = 'we')
 
         #boton donar_libros
@@ -95,6 +95,8 @@ class VentanaPrincipal:
         self.btn_devolver_prestamo.grid(row=4, column = 0, pady = 5, sticky = 'we')
 
 
+
+
     def _cargar_boton_administrativo(self):
         self.btn_administrativo = tk.Button(self.barra_lateral, text = '📇Panel Administrativo',
                                             bg = "#FFFFFF",
@@ -113,18 +115,96 @@ class VentanaPrincipal:
         menu = tk.Menu(self.ventana, bg="#A9A9A9")
         self.ventana.config(menu=menu)
 
-        file_menu = tk.Menu(menu)
-        menu.add_cascade(label='Usuario', menu = file_menu)
-        file_menu.add_command(label='Configuracion', command = lambda: self.clase_administrativa.mostrar_ventana())
+        file_menu = tk.Menu(menu, tearoff=0)
+        menu.add_cascade(label='Usuario', menu=file_menu)
+        file_menu.add_command(
+            label='Configuracion',
+            command=lambda: self.clase_administrativa.mostrar_ventana()
+        )
         file_menu.add_separator()
-        file_menu.add_command(label='Exit', command = self.ventana.quit)
+        file_menu.add_command(label='Exit', command=self.ventana.quit)
 
-        help_menu = tk.Menu(menu)
-        menu.add_cascade(label='Help', menu = help_menu)
-        help_menu.add_command(label='Bienvenida')
-        help_menu.add_command(label='Informacion')
+        help_menu = tk.Menu(menu, tearoff=0)
+        menu.add_cascade(label='Help', menu=help_menu)
+        help_menu.add_command(label='Bienvenida', command=self.mostrar_bienvenida)
+        help_menu.add_command(label='Informacion', command=self.mostrar_informacion)
         help_menu.add_separator()
-        
+
+    def mostrar_bienvenida(self):
+        ventana = tk.Toplevel(self.ventana)
+        ventana.title("Bienvenida")
+        ventana.geometry("500x300")
+        ventana.configure(bg="#111111")
+        ventana.resizable(False, False)
+
+        tk.Label(
+            ventana,
+            text="📚 Biblioteca CoopePuntarenas",
+            font=("Arial", 18, "bold"),
+            bg="#111111",
+            fg="white"
+        ).pack(pady=20)
+
+        tk.Label(
+            ventana,
+            text="Bienvenido al sistema de biblioteca.\n\n"
+                 "Aquí puedes consultar libros, donar libros,\n"
+                 "solicitar préstamos y administrar tus préstamos.",
+            font=("Arial", 12),
+            bg="#111111",
+            fg="#DDDDDD",
+            justify="center"
+        ).pack(pady=10)
+
+        tk.Button(
+            ventana,
+            text="Cerrar",
+            font=("Arial", 11, "bold"),
+            bg="#2E8B57",
+            fg="white",
+            width=15,
+            command=ventana.destroy
+        ).pack(pady=25)
+
+    def mostrar_informacion(self):
+        ventana = tk.Toplevel(self.ventana)
+        ventana.title("Información")
+        ventana.geometry("500x320")
+        ventana.configure(bg="#111111")
+        ventana.resizable(False, False)
+
+        tk.Label(
+            ventana,
+            text="ℹ️ Información del Sistema",
+            font=("Arial", 18, "bold"),
+            bg="#111111",
+            fg="white"
+        ).pack(pady=20)
+
+        tk.Label(
+            ventana,
+            text="Sistema: Biblioteca CoopePuntarenas\n"
+                 "Versión: 1.0\n"
+                 "Lenguaje: Python\n"
+                 "Interfaz: Tkinter\n\n"
+                 "Este sistema permite gestionar libros,\n"
+                 "donaciones, préstamos y usuarios.",
+            font=("Arial", 12),
+            bg="#111111",
+            fg="#DDDDDD",
+            justify="center"
+        ).pack(pady=10)
+
+        tk.Button(
+            ventana,
+            text="Cerrar",
+            font=("Arial", 11, "bold"),
+            bg="#4169E1",
+            fg="white",
+            width=15,
+            command=ventana.destroy
+        ).pack(pady=25)
+
 
     def mostrar_adv(self, error):
         messagebox.showwarning('Advertencia',error, parent = self.ventana)

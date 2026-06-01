@@ -12,13 +12,12 @@ from Service.donacion_service import DonativoService
 from Service.prestamo_service import ServicePrestamo
 
 
-from datetime import datetime
-
-
 def main():
     root = tk.Tk()
+
     # ================= REPOSITORIO =================
     repo = Repository
+
     # ================= SERVICES =================
     service_cliente = ClienteService(repo)
     service_libro = LibroService(repo)
@@ -26,11 +25,25 @@ def main():
     service_prestamo = ServicePrestamo(repo, service_libro)
 
     # ================= CONTROLLERS =================
-    controller_admin = ControladorVentanaAdministrativa(root,service_libro,service_donativo)
-    controller_login = LoginController(root,service_cliente,ControladorVentanaPrincipal,service_donativo,controller_admin,service_libro,service_prestamo)
+    controller_admin = ControladorVentanaAdministrativa(
+        root,
+        service_libro,
+        service_donativo,
+        service_prestamo
+    )
+
+    controller_login = LoginController(
+        root,
+        service_cliente,
+        ControladorVentanaPrincipal,
+        service_donativo,
+        controller_admin,
+        service_libro,
+        service_prestamo
+    )
 
     root.mainloop()
-    
+
 
 if __name__ == '__main__':
     main()
