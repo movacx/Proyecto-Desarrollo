@@ -5,8 +5,7 @@ import random
 class LibroService:
     def __init__(self, repository):
         self.repo = repository('Data/Json/file_libro.json', Libro.from_dict)
-        self.repo_donativo = repository('Data/Json/donaciones.json', Donativo.from_dict)
-
+        self.repo_donativo = repository('Data/Json/file_donaciones.json', Donativo.from_dict)
     #-=-=-==--==--==--==--=-=-==--==--=-=-=-=-=-=-=-=-=-=-=-=-=-==[ #Fin constructor ]--=-=-==--=-=-=-==-=-=-=--=-=-=-==--=-=-=-==-=--==-=--==-=-=-=--==-=--=-=-=-=-==-=-=-=-=-=-#
 
     #Funcion: Registro, encargado de registrar el libro \o/
@@ -30,26 +29,30 @@ class LibroService:
     #---------------------------------------------------------------------------------------#
     #Funcion: Administrar donacion, esta se encarga de registrar oficialmente los libros donados,
     #pasando por un proceso de clasificacion
-    def administrar_donacion(self, id,categoria):
+    def administrar_donacion(self, id, categoria):
         if not categoria.strip():
             raise ValueError('Debe de seleccionar una categoria')
         if not id.strip():
             raise ValueError('Debe de seleccionar un donativo')
-        
+
         objeto_recibido = self.repo_donativo.buscar_id(id)
+
+        if objeto_recibido is None:
+            raise ValueError('No se encontró una donación con ese ID')
+
         objeto_recibido.recibido = True
         self.repo_donativo._save()
 
-        #Generador de Id's
-        while self.repo.existe_id(id):
-            id = random.randint(2000,30000)
+        id_libro = random.randint(2000, 30000)
+
+        while self.repo.existe_id(id_libro):
+            id_libro = random.randint(2000, 30000)
 
         titulo = objeto_recibido.titulo_libro
         autor = objeto_recibido.nombre_autor
         inventario = objeto_recibido.cant_libros_donados
 
-        #Creacion del objeto Libro
-        nuevo = Libro(id,titulo,autor,inventario,'Disponible',categoria)
+        nuevo = Libro(id_libro, titulo, autor, inventario, 'Disponible', categoria)
         return self.repo.agregar(nuevo)
 
     #---------------------------------------------------------------------------------------#

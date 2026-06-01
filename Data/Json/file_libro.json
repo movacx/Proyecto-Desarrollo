@@ -150,5 +150,29 @@
         "Stock": 6,
         "Estado": "Disponible",
         "Categoria": "Drama"
+    },
+    {
+        "Libro N°": 35,
+        "Titulo": "Amor en los tiempos del colera ",
+        "Autor": "Gabriel Garcia ",
+        "Stock": 1,
+        "Estado": "Disponible",
+        "Categoria": "Romance "
+    },
+    {
+        "Libro N°": 15,
+        "Titulo": "Amor en los tiempos del colera ",
+        "Autor": "Gabriel Garcia ",
+        "Stock": 1,
+        "Estado": "Disponible",
+        "Categoria": "Romance "
+    },
+    {
+        "Libro N°": 28840,
+        "Titulo": "Boulevard ",
+        "Autor": "Ana",
+        "Stock": 1,
+        "Estado": "Disponible",
+        "Categoria": "Seleccione"
     }
 ]
